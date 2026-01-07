@@ -5,13 +5,22 @@
    MySQL 8+ recommandé
 ========================================================= */
 
+-- Création / réinitialisation de la base
 DROP DATABASE IF EXISTS tifosi;
 CREATE DATABASE tifosi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Utilisateur MySQL dédié
+DROP USER IF EXISTS 'tifosi'@'localhost';
+CREATE USER 'tifosi'@'localhost' IDENTIFIED BY 'Tifosi_2026!';
+GRANT ALL PRIVILEGES ON tifosi.* TO 'tifosi'@'localhost';
+FLUSH PRIVILEGES;
+
 USE tifosi;
 
 /* =========================
    TABLES PRINCIPALES
 ========================= */
+
 
 -- Ingrédients
 CREATE TABLE ingredient (
